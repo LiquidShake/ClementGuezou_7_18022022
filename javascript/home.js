@@ -1727,24 +1727,24 @@ const recipes = [
 
 const recipesGrid = document.getElementById('recipesGrid');
 const recipeCard = recipes.map(recipe => 
-    `<article class="recipe">
-        <img src="https://source.unsplash.com/random/413x200" />
-        <div class="content">
-            <div class="content-head">
-                ${recipe.name}
-                ${recipe.time} min
-            </div>
-            <div class="ingredients">
-                ${recipe.ingredients.map(ingredient =>
-                    `<strong>${ingredient.ingredient}:</strong>
-                    ${ingredient.quantity}${ingredient.unit}`
-                )}
-            </div>
-            <div class="description">
-                ${recipe.description}
-            </div>
-        </div>
-     </article>`
+    recipesGrid.innerHTML += `<article class="recipe">
+                                <img src="https://source.unsplash.com/random/413x200" />
+                                <div class="content">
+                                    <div class="content-head">
+                                        ${recipe.name}
+                                        ${recipe.time} min
+                                    </div>
+                                    <div class="ingredients">
+                                        ${recipe.ingredients.map(ingredient =>
+                                            `<strong>${ingredient.ingredient}:</strong>
+                                            ${ingredient.quantity ? ingredient.quantity : ''}${ingredient.unit ? ingredient.unit : ''}`
+                                        )}
+                                    </div>
+                                    <div class="description">
+                                        ${recipe.description}
+                                    </div>
+                                </div>
+                            </article>`
     );
 
-recipesGrid.innerHTML = recipeCard;
+
