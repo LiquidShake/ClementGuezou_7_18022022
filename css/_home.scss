@@ -1,0 +1,49 @@
+.wrapper{
+    max-width: 1280px;
+    width: 98%;
+    margin: auto;
+    .logo{
+        width: max-content;
+        margin: auto;
+    }
+    #searchbar{
+        width: 100%;
+        background: #eee;
+        border: none;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 8px;
+        font-size: 1.5em;
+    }
+    .filters{
+        select{
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 150px;
+            border-radius: 8px;
+            transition: .3s;
+            &#ingredients{
+                background: #3282f7;
+            }
+            &#appareils{
+                background: #68d9a4;
+            }
+            &#ustensiles{
+                background: #ed6454;
+            }
+            &:focus{
+                width: 300px;
+            }
+            option{
+                color:white;
+                width: inherit;
+            }
+        }
+    }
+    .recipesGrid{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+    }
+}
