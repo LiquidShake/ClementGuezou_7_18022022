@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.scss">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script type="module" src="javascript/home.js" async></script>
+        <title>Les petits plats</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="logo"><img src="img/lpp_logo.png" alt="logo"></div>
+            <input type="search" name="searchbar" id="searchbar" placeholder="Rechercher une recette">
+            <div class="tags"></div>
+            <div class="filters">
+                <select name="ingredients" id="ingredients">
+                    <option value="" disabled selected>Ingredients</option>
+                </select>
+                <select name="appareils" id="appareils">
+                    <option value="" disabled selected>Appareils</option>
+                </select>
+                <select name="ustensiles" id="ustensiles">
+                    <option value="" disabled selected>Ustensiles</option>
+                </select>
+            </div>
+
+            <section class="recipesGrid" id="recipesGrid">
+
+            </section>
+        </div>
+    </body>
+</html>

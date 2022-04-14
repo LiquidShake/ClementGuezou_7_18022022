@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+html, body{
+    font-family: 'Roboto';
+}
+
+.wrapper{
+    max-width: 1280px;
+    width: 98%;
+    margin: auto;
+    .logo{
+        width: max-content;
+        margin: auto;
+    }
+    #searchbar{
+        width: 100%;
+        background: #eee;
+        border: none;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 8px;
+        font-size: 1.5em;
+    }
+    .filters{
+        select{
+            color: white;
+            border: none;
+            padding: 15px;
+            margin-right: 8px;
+            width: 150px;
+            border-radius: 8px;
+            transition: .3s;
+            &#ingredients{
+                background: #3282f7;
+            }
+            &#appareils{
+                background: #68d9a4;
+            }
+            &#ustensiles{
+                background: #ed6454;
+            }
+            &:focus{
+                width: 300px;
+            }
+            option{
+                color:white;
+                width: inherit;
+            }
+        }
+    }
+    .recipesGrid{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+        margin: 20px 0;
+        .recipe{
+            background: #eee;
+            border-radius: 10px;
+            max-height: 400px;
+            text-overflow: clip;
+                overflow: hidden;
+            img{
+                object-fit: cover;
+                width: 100%;
+                height: 50%;
+                border-radius: 10px 10px 0 0;
+            }
+            .content{
+                padding: 20px;
+                .content-head{
+                    margin-bottom: 20px;
+                    font-size: 20px;
+                    display: flex;
+                    justify-content:space-between;
+                    align-items: center;
+                    .timer{
+                        font-weight: 600;
+                        position: relative;
+                        &::before{
+                            content:'';
+                            background: url(../img/timer.svg) no-repeat;
+                            background-size: cover;
+                            width: 25px;
+                            height: 25px;
+                            display: inline-block;
+                            position: absolute;
+                            left: -30px;
+                        }
+                    }
+                }
+                .ingredients, .description{
+                    display: inline-block;
+                    vertical-align: top;
+                    width: 47%;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
