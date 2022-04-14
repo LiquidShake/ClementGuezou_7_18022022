@@ -27,39 +27,27 @@ const DISPLAY_CARDS = (recipes) => {
 
 DISPLAY_CARDS(recipesJSON);
 
-    // LISTEN INPUT BARRE DE RECHERCHE
-export let IS_GOOGLE = (recipes) => {
-    console.log("TEST1")
-  const takeIt = document.querySelector("#searchbar");
+/* L'input de recherche et son contenu */
+const searchbar = document.getElementById('searchbar');
+let searchbarVal;
+/* les cartes de recettes et leurs contenus */
+const cards = Array.from(document.getElementsByClassName('recipe'));
+let cardVal;
 
-  takeIt.addEventListener("input", () => {
-    // si le nbre de lettre dépasse 2 alors :  LANCER ALGO
-    if (takeIt.value.length > 2) {
-
-        console.log("TEST2")
-      const googledRecipes = theMillTurns(recipes, takeIt.value);
-      const googledRecipesDistinct = deleteDuplicatesGoogled(googledRecipes);
-
-      cards.DISPLAY_CARDS(googledRecipesDistinct);
-      filters.DISPLAY_FILTERS(googledRecipesDistinct);
-      isFilterReload(recipes);
-    } else {
-      // SINON TABLEAU DES RECETTES
-      cards.DISPLAY_CARDS(recipes);
-      isFilterReload(recipes);
-      // ON VIDE LE TABLEAU DES TAGS
-      while (tagsArray.length > 0) {
-        tagsArray.pop();
-      }
-      showListOfTags(tagsArray);
-
-      document.querySelectorAll(".filter__custom-option").forEach((li) => {
-        li.classList.add("filter__custom-option");
-        li.classList.remove("filter__custom-option--enable");
-      });
+/* On récupère le texte à l'interieur de l'input a chaque frappe sur le clavier */
+searchbar.addEventListener('keyup', () => {
+    /* On actualise la variable a chaque fois */
+    searchbarVal = searchbar.value;
+    /* On boucle sur les recettes */
+    for(let i = 0; i < cards.length; i++){
+        /* On récupère le texte de chaque recette */
+        cardVal = cards[i].innerText.toLowerCase();
+        /* Si la chaine récupérée dans l'input est contenu dans le texte de la recette on l'affiche */
+        if(cardVal.includes(searchbarVal)){
+            cards[i].style.display = 'block';
+        /* Sinon on la masque */
+        }else{
+            cards[i].style.display = 'none';
+        }
     }
-  });
-};
-
-
-IS_GOOGLE(recipesJSON);
+})
