@@ -20,15 +20,72 @@ html, body{
         border-radius: 8px;
         font-size: 1.5em;
     }
+    .tags{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        .tag{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            padding: 8px;
+            color: white;
+            text-transform: capitalize;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            visibility: hidden;
+            position: absolute;
+            &::after{
+                content:'';
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                margin-left: 5px;
+                background: url(../img/cancel_tag.svg) no-repeat center;
+                background-size: cover;
+                transition: .2s;
+            }
+            &:hover{
+                &::after{
+                    transform: scale(1.2);
+                }
+            }
+            &.active{
+                visibility: visible;
+                position: relative;
+            }
+        }
+        .tag-ingredient{
+            background: #3282f7;
+        }
+        .tag-ustensil{
+            background: #ed6454;
+        }
+        .tag-appareil{
+            background: #68d9a4;
+        }
+    }
     .filters{
-        select{
+        margin-top: 20px;
+        display: flex;
+        gap: 5px;
+        position: relative;
+        input{
             color: white;
             border: none;
             padding: 15px;
             margin-right: 8px;
             width: 150px;
-            border-radius: 8px;
+            border-radius: 5px;
             transition: .3s;
+            font-size: 18px;
+            font-weight: 700;
+            &::placeholder{
+                color: white;
+                opacity: 1;
+            }
             &#ingredients{
                 background: #3282f7;
             }
@@ -38,61 +95,48 @@ html, body{
             &#ustensiles{
                 background: #ed6454;
             }
-            &:focus{
-                width: 300px;
-            }
-            option{
-                color:white;
-                width: inherit;
+            &.opened{
+                width: 72%;
+                border: none;
+                outline: none;
             }
         }
-    }
-    .recipesGrid{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 20px;
-        margin: 20px 0;
-        .recipe{
-            background: #eee;
-            border-radius: 10px;
-            max-height: 400px;
-            text-overflow: clip;
-                overflow: hidden;
-            img{
-                object-fit: cover;
-                width: 100%;
-                height: 50%;
-                border-radius: 10px 10px 0 0;
+        div{
+            display: none;
+            position:absolute;
+            top: 45px;
+            width: 72%;
+            z-index: 3;
+            ul{
+                list-style: none;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                color: white;
+                padding: 10px 18px;
+                margin: 0;
+                font-size: 18px;
+                border-radius: 5px;
+                &#ingredients-list{
+                    background: #3282f7;
+                }
+                &#appareils-list{
+                    background: #68d9a4;
+                }
+                &#ustensils-list{
+                    background: #ed6454;
+                }
+                li{
+                    text-transform: capitalize;
+                    font-weight: 400;
+                    margin: 5px 0;
+                    cursor: pointer;
+                }
             }
-            .content{
-                padding: 20px;
-                .content-head{
-                    margin-bottom: 20px;
-                    font-size: 20px;
-                    display: flex;
-                    justify-content:space-between;
-                    align-items: center;
-                    .timer{
-                        font-weight: 600;
-                        position: relative;
-                        &::before{
-                            content:'';
-                            background: url(../img/timer.svg) no-repeat;
-                            background-size: cover;
-                            width: 25px;
-                            height: 25px;
-                            display: inline-block;
-                            position: absolute;
-                            left: -30px;
-                        }
-                    }
-                }
-                .ingredients, .description{
-                    display: inline-block;
-                    vertical-align: top;
-                    width: 47%;
-                    font-size: 12px;
-                }
+            &:nth-of-type(2){
+                left: 163px;
+            }
+            &:last-of-type{
+                left: 326px;
             }
         }
     }

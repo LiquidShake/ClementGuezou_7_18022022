@@ -13,17 +13,20 @@
         <div class="wrapper">
             <div class="logo"><img src="img/lpp_logo.png" alt="logo"></div>
             <input type="search" name="searchbar" id="searchbar" placeholder="Rechercher une recette">
-            <div class="tags"></div>
+            <div id="tags" class="tags"></div>
             <div class="filters">
-                <select name="ingredients" id="ingredients">
-                    <option value="" disabled selected>Ingredients</option>
-                </select>
-                <select name="appareils" id="appareils">
-                    <option value="" disabled selected>Appareils</option>
-                </select>
-                <select name="ustensiles" id="ustensiles">
-                    <option value="" disabled selected>Ustensiles</option>
-                </select>
+                <input type="search" class="filterInput" name="ingredients" id="ingredients" placeholder="Ingrédients">
+                <input type="search" class="filterInput" name="appareils" id="appareils" placeholder="Appareils">
+                <input type="search" class="filterInput" name="ustensiles" id="ustensiles" placeholder="Ustensiles">
+                <div id="ingredients-container">
+                    <ul id="ingredients-list"></ul>
+                </div>
+                <div id="appareils-container">
+                    <ul id="appareils-list"></ul>
+                </div>
+                <div id="ustensils-container">
+                    <ul id="ustensils-list"></ul>
+                </div>
             </div>
 
             <section class="recipesGrid" id="recipesGrid">

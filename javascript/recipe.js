@@ -252,7 +252,7 @@ const recipes = [
         "time": 50,
         "description": "Etaler la pate dans les moules à tartelette. Faire cuire la pate 30 minutes. Découper le chocolat en morceau et le faire chauffer, y ajouter la crême liquide, ajouter le beurre et remuer jusqu'à avoir une pâte homogène. Verser la pate sur les tartelettes. Couper les fraises en 2 et les positionner sur ",
         "appliance":"Four",
-        "ustensils":["moule à tartelettes (6)", "casserolle"]
+        "ustensils":["moule à tartelettes", "casserolle"]
     }, {
         "id": 8,
         "name": "Brownie",
@@ -664,7 +664,7 @@ const recipes = [
                 "quantity": 1
             }
         ],
-        "time": 0,
+        "time": 10,
         "description":"Coupez les fruits en morceaux, ajouter le jus de citron et le lait ainsi que le sucre glace. Mixez. Ajoutez des glaçons si le lait n'a pas été mis au frais.",
         "appliance": "Blender",
         "ustensils":["couteau", "verres", "presse citron"]
@@ -742,7 +742,7 @@ const recipes = [
         ],
         "time": 30,
         "description":"Cuisiner la viande hachée dans une poelle à frire. Dans une autre faire cuire les oignons découpés en fins dés avec un peu de beurre. Ajouter du vin rouge. Mélanger les oigons avec la viande hachée. Faire cuire les pates le temps indiqué sur le paquet. Ajouter le coulis de tomates à la viande hachée. Une fois que les pates sont cuites, ajouter la crème fraiche à la viande hachée. Serivir.",
-        "appliance": "Casserolle.",
+        "appliance": "Casserole",
         "ustensils":["Cuillère en bois", "louche", "couteau"]
     },
     {
@@ -1683,7 +1683,7 @@ const recipes = [
                 "unit": "cuillères à soupe"
             }
         ],
-        "time": 0,
+        "time": 10,
         "description":"Découper les fruits. Le passer au blender jusqu'à obtenir une texture liquide. Mettre au frais. Servir",
         "appliance": "Blender",
         "ustensils":["couteau", "verres"]
