@@ -3,6 +3,7 @@ export function displayFilters(recipes){
     displayIngredients(recipes);
     displayUstensils(recipes);
     displayAppliance(recipes);
+    openFilters();
 
 }
 
@@ -21,12 +22,14 @@ function filterToTag(itemClass){
                     tags[i].classList.add('active');
                 }
             }
+            tagToCard();
         })
     })
 
     tags.forEach((tag) => {
         tag.addEventListener('click', () => {
             tag.classList.remove('active');
+            tagToCard();
         })
     })
 }
@@ -37,23 +40,27 @@ function tagToCard(){
     let tagVal;
     let recipeVal;
 
-    activeTags.forEach((tag) => {
-        tagVal = tag.innerHTML.toLowerCase();
-        for (let i = 0; i < recipes.length; i++) {
-            recipeVal = recipes[i].innerText.toLowerCase();
-            if (recipeVal.includes(tagVal)) {
-                recipes[i].style.display = 'block';
-            }else{
-                recipes[i].style.display = 'none';
+    if(activeTags.length > 0){
+        activeTags.forEach((tag) => {
+            tagVal = tag.innerHTML.toLowerCase();
+            for (let i = 0; i < recipes.length; i++) {
+                recipeVal = recipes[i].innerText.toLowerCase();
+                if (recipeVal.includes(tagVal)) {
+                    recipes[i].style.display = 'block';
+                }else{
+                    recipes[i].style.display = 'none';
+                }
+                
             }
-            
-        }
-    })
+        })
+    }else{
+        recipes.forEach((recipe) => {
+            recipe.style.display = 'block';
+        })
+    }
 }
 
 function displayIngredients(recipes){
-    const ingredientsInput     = document.getElementById('ingredients');
-    const ingredientsContainer = document.getElementById('ingredients-container');
     const ingredientsList      = document.getElementById('ingredients-list');
     const list = new Array();
 
@@ -66,30 +73,13 @@ function displayIngredients(recipes){
             }else{
                 /* Si non, on l'ajoute à la liste */
                 list.push(ingredient.ingredient.toLowerCase());
-                ingredientsList.innerHTML += `<li class="ingredient-item">${ingredient.ingredient.toLowerCase()}</li>`;
+                ingredientsList.innerHTML += `<li class="ingredient-item item">${ingredient.ingredient.toLowerCase()}</li>`;
             } 
         })
     );
-    
-    /* On ajoute une classe quand l'input prend le focus */
-    ingredientsInput.addEventListener('focus', () => {
-        ingredientsInput.classList.add('opened');
-        /* On affiche la liste d'options */
-        ingredientsContainer.style.display = 'block';
-        filterToTag("ingredient-item");
-        tagToCard();
-    });
-    /* On la retire quand il le perd */
-    ingredientsInput.addEventListener('blur', () => {
-        ingredientsInput.classList.remove('opened');
-        /* On masque la liste d'options */
-        ingredientsContainer.style.display = 'none';
-    });
 }
 
 function displayUstensils(recipes){
-    const ustensilsInput     = document.getElementById('ustensiles');
-    const ustensilsContainer = document.getElementById('ustensils-container');
     const ustensilsList      = document.getElementById('ustensils-list');
     const list = new Array();
 
@@ -102,31 +92,14 @@ function displayUstensils(recipes){
             }else{
                 /* Si non, on l'ajoute à la liste */
                 list.push(ustensil.toLowerCase());
-                ustensilsList.innerHTML += `<li class="ustensil-item">${ustensil.toLowerCase()}</li>`;
+                ustensilsList.innerHTML += `<li class="ustensil-item item">${ustensil.toLowerCase()}</li>`;
             } 
         })
     );
-
-    /* On ajoute une classe quand l'input prend le focus */
-    ustensilsInput.addEventListener('focus', () => {
-        ustensilsInput.classList.add('opened');
-        /* On affiche la liste d'options */
-        ustensilsContainer.style.display = 'block';
-        filterToTag("ustensil-item");
-        tagToCard();
-    });
-    /* On la retire quand il le perd */
-    ustensilsInput.addEventListener('blur', () => {
-        ustensilsInput.classList.remove('opened');
-        /* On masque la liste d'options */
-        ustensilsContainer.style.display = 'none';
-    });
 }
 
 function displayAppliance(recipes){
-    const appareilsInput     = document.getElementById('appareils');
-    const appareilsContainer = document.getElementById('appareils-container');
-    const applianceList      = document.getElementById('appareils-list');
+    const applianceList = document.getElementById('appareils-list');
     const list = new Array();
 
     recipes.map((recipe) => {
@@ -136,22 +109,37 @@ function displayAppliance(recipes){
         }else{
             /* Si non, on l'ajoute à la liste */
             list.push(recipe.appliance.toLowerCase());
-            applianceList.innerHTML += `<li class="appliance-item">${recipe.appliance.toLowerCase()}</li>`;
+            applianceList.innerHTML += `<li class="appliance-item item">${recipe.appliance.toLowerCase()}</li>`;
         }
     });
+}
 
-    /* On ajoute une classe quand l'input prend le focus */
-    appareilsInput.addEventListener('focus', () => {
-        appareilsInput.classList.add('opened');
-        /* On affiche la liste d'options */
-        appareilsContainer.style.display = 'block';
-        filterToTag("appliance-item");
-        tagToCard();
-    });
-    /* On la retire quand il le perd */
-    appareilsInput.addEventListener('blur', () => {
-        appareilsInput.classList.remove('opened');
-        /* On masque la liste d'options */
-        appareilsContainer.style.display = 'none';
-    });
+function openFilters(){
+    
+    const filtersContainers = Array.from(document.getElementsByClassName('filters-container'));
+
+    filtersContainers.forEach((container) => {
+        /* On observe les enfants du container */
+        const children = Array.from(container.children);
+        /* On récupère la liste de filtres */
+        const filtersList = children.find(element => element.classList.contains('filtersList'));
+
+        /* On ajoute une classe quand le container prend le focus */
+        container.addEventListener('focusin', () => {
+            container.classList.add('opened');
+            /* On affiche la liste d'options */
+            filtersList.style.display = 'grid';
+            filterToTag("item");
+            
+        });
+        /* On la retire quand il le perd */
+        container.addEventListener('focusout', () => {
+            container.classList.remove('opened');
+            /* On masque la liste d'options */
+            filtersList.style.display = 'none';
+        });
+
+    })
+
+     
 }

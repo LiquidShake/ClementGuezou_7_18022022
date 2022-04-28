@@ -15,17 +15,17 @@
             <input type="search" name="searchbar" id="searchbar" placeholder="Rechercher une recette">
             <div id="tags" class="tags"></div>
             <div class="filters">
-                <input type="search" class="filterInput" name="ingredients" id="ingredients" placeholder="Ingrédients">
-                <input type="search" class="filterInput" name="appareils" id="appareils" placeholder="Appareils">
-                <input type="search" class="filterInput" name="ustensiles" id="ustensiles" placeholder="Ustensiles">
-                <div id="ingredients-container">
-                    <ul id="ingredients-list"></ul>
+                <div class="filters-container" tabindex="0">
+                    <input type="search" class="filtersInput" name="ingredients" id="ingredients" placeholder="Ingrédients">
+                    <ul class="filtersList" id="ingredients-list"></ul>
                 </div>
-                <div id="appareils-container">
-                    <ul id="appareils-list"></ul>
+                <div class="filters-container" tabindex="1">
+                    <input type="search" class="filtersInput" name="appareils" id="appareils" placeholder="Appareils">
+                    <ul class="filtersList" id="appareils-list"></ul>
                 </div>
-                <div id="ustensils-container">
-                    <ul id="ustensils-list"></ul>
+                <div class="filters-container" tabindex="2">
+                    <input type="search" class="filtersInput" name="ustensiles" id="ustensiles" placeholder="Ustensiles">
+                    <ul class="filtersList" id="ustensils-list"></ul>
                 </div>
             </div>
 
