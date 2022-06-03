@@ -2,7 +2,7 @@ const recipesGrid = document.getElementById('recipesGrid');
 
 export function displayCards(recipes) {
     recipes.map(recipe =>
-        recipesGrid.innerHTML += `<article class="recipe">
+        recipesGrid.innerHTML += `<article class="recipe" id="${recipe.id}">
                                     <img src="https://source.unsplash.com/random/" />
                                     <div class="content">
                                         <div class="content-head">

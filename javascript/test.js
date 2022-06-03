@@ -1,7 +1,7 @@
 import recipesJSON from "./recipe.js";
 import { displayCards } from "./displayCards.js";
 import { displayTags} from "./displayTags.js";
-import { searchInput } from "./searchInput.js";
+import { searchInput, searchInputv2 } from "./searchInput.js";
 import { displayFilters } from "./displayFilters.js"
 
 displayCards(recipesJSON);

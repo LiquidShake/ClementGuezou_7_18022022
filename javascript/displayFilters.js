@@ -1,9 +1,23 @@
-export function displayFilters(recipes){
+export function displayFilters(recipes, displayedRecipes){
+    
+    let filteredRecipes = [];
 
-    displayIngredients(recipes);
-    displayUstensils(recipes);
-    displayAppliance(recipes);
+    if(displayedRecipes && displayedRecipes.length !== 0){
+        filteredRecipes = recipes.filter((recipe) => {
+            if(displayedRecipes.includes(String(recipe.id))){
+                return recipe;
+            }
+        })
+        console.log(filteredRecipes);
+    }else{
+        filteredRecipes = recipes
+    }
+    
+    displayIngredients(filteredRecipes);
+    displayUstensils(filteredRecipes);
+    displayAppliance(filteredRecipes);
     openFilters();
+
 
 }
 
@@ -61,8 +75,9 @@ function tagToCard(){
 }
 
 function displayIngredients(recipes){
-    const ingredientsList      = document.getElementById('ingredients-list');
+    const ingredientsList = document.getElementById('ingredients-list');
     const list = new Array();
+    ingredientsList.innerHTML = '';
 
     recipes.map(recipe =>
         /* Boucle sur les ingredients */
@@ -77,11 +92,14 @@ function displayIngredients(recipes){
             } 
         })
     );
+
+
 }
 
 function displayUstensils(recipes){
     const ustensilsList      = document.getElementById('ustensils-list');
     const list = new Array();
+    ustensilsList.innerHTML = '';
 
     recipes.map(recipe =>
         /* Boucle sur les ustensils */
@@ -101,6 +119,7 @@ function displayUstensils(recipes){
 function displayAppliance(recipes){
     const applianceList = document.getElementById('appareils-list');
     const list = new Array();
+    applianceList.innerHTML = '';
 
     recipes.map((recipe) => {
         /* On regarde si l'appareil est deja présent dans la liste */
